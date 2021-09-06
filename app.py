@@ -19,9 +19,10 @@ def index():
 
         # всё сохраняем в куки/ для них нужно что-то вернуть
         cookie = {'word': request.cookies.get('word'), 'quantity': request.cookies.get('quantity')}
-        resp = make_response(render_template('search.html', cookie=cookie))
         resp.set_cookie('word', data.get('word'))
         resp.set_cookie('quantity', data.get('quantity'))
+        resp = make_response(render_template('search.html', cookie=cookie))
+
 
         return redirect(url_for('result'))
     return resp
@@ -29,7 +30,8 @@ def index():
 
 @app.route('/result/')
 def result():
-    obj_file = open_file("Harry Potter and the Sorcerer.txt")
+    # obj_file = open_file("Harry Potter and the Sorcerer.txt")
+    obj_file = open_file("/home/Artemy/mysite/Harry Potter and the Sorcerer.txt")
     flag = is_find(obj_file, data.get('word'), data.get('quantity'))
     data.update(flag=flag)
 
