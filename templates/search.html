@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+ <form action="" method="post">
+        <p>
+	    <label for="word">Word</label>
+	    <input type="text" name="word" value=
+                {% if request.cookies.get('word') %}
+                    {{ request.cookies.get('word') }}
+                {% endif %}
+        >
+	</p>
+	<p>
+	    <label for="quantity">Quantity</label>
+	    <input type="text" name="quantity" value=
+                {% if request.cookies.get('quantity') %}
+                    {{ request.cookies.get('quantity') }}
+                {% endif %}
+        >
+	</p>
+	<p>
+	    <input type="submit">
+	</p>
+    </form>
+
+</body>
+</html>

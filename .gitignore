@@ -1,0 +1,18 @@
+*.pyc
+*~
+__pycache__
+venv
+db.sqlite3
+/static
+.DS_Store
+.idea
+Harry Potter and the Sorcerer.txt
+.profile
+.gitconfig
+.pythonstartup.py
+.vimrc
+.bashrc
+.cache/
+.local/
+.virtualenvs/
+nltk_data/
