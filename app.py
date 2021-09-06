@@ -11,27 +11,30 @@ data = {}
 
 @app.route('/', methods=['post', 'get'])
 def index():
+    resp = make_response(render_template('search.html'))
     if request.method == 'POST':
         word = request.form.get('word')
         quantity = request.form.get('quantity')
         data.update(word=word, quantity=quantity)
+
+        # всё сохраняем в куки/ для них нужно что-то вернуть
+        cookie = {'word': request.cookies.get('word'), 'quantity': request.cookies.get('quantity')}
+        resp = make_response(render_template('search.html', cookie=cookie))
+        resp.set_cookie('word', data.get('word'))
+        resp.set_cookie('quantity', data.get('quantity'))
+
         return redirect(url_for('result'))
-    return render_template('search.html')
+    return resp
 
 
 @app.route('/result/')
 def result():
-    obj_file = open_file("/home/Artemy/mysite/Harry Potter and the Sorcerer.txt")
+    obj_file = open_file("Harry Potter and the Sorcerer.txt")
     flag = is_find(obj_file, data.get('word'), data.get('quantity'))
     data.update(flag=flag)
-    # всё сохраняем в куки
-    res = make_response("Setting a cookie")
-    res.set_cookie('word', data.get('word'))
-    res.set_cookie('quantity', data.get('quantity'))
-    # res.set_cookie('flag', str(data.get('flag')))
 
-    if flag:
-        res = make_response("Найдено слово {}".format(data.get('word')))
-    else:
-        res = make_response("Не найдено слово {}".format(data.get('word')))
-    return res
+    return render_template('result.html', data=data)
+
+
+# if __name__ == "__main__":
+#     app.run()

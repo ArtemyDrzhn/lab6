@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+</head>
+<body>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% if data %}
+    <center><p style="font-size: 32px"> Найдено слово {{ data.word }} в количестве {{ data.quantity }}</p><center>
+{% else %}
+    <center><p style="font-size: 32px"> Не найдено слово {{ data.word }} в количестве {{ data.quantity }}</p><center>
+{% endif %}
+</body>
+</html>

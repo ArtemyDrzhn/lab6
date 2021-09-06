@@ -5,20 +5,25 @@
     <title>Search</title>
 </head>
 <body>
- <form action="" method="post">
+<center style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 40px">
+    Введите слово и <br>количество повторений
+</center>
+<br><br><br><br><br><br><br>
+ <center>
+     <form action="" method="post">
         <p>
-	    <label for="word">Word</label>
+	    <label style="font-size: 32px" for="word">Word</label>
 	    <input type="text" name="word" value=
-                {% if request.cookies.get('word') %}
-                    {{ request.cookies.get('word') }}
+                {% if cookie %}
+                    {{ cookie.get('word') }}
                 {% endif %}
         >
 	</p>
 	<p>
-	    <label for="quantity">Quantity</label>
+	    <label style="font-size: 32px"  for="quantity">Quantity</label>
 	    <input type="text" name="quantity" value=
-                {% if request.cookies.get('quantity') %}
-                    {{ request.cookies.get('quantity') }}
+                {% if cookie %}
+                    {{ cookie.get('quantity') }}
                 {% endif %}
         >
 	</p>
@@ -26,6 +31,7 @@
 	    <input type="submit">
 	</p>
     </form>
+ </center>
 
 </body>
 </html>
