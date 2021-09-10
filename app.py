@@ -46,7 +46,7 @@ def my_request():
     # json_obj = read_json(path_json_i
     # file_read = open_file_for_json(r"D:\Study\University\Sem 7\КПРС ПО\Лабораторные\
     # 6\flask\Harry Potter and the Sorcerer.txt")
-    file_read = open_file("/home/Artemy/mysite/Harry Potter and the Sorcerer.txt")
+    file_read = open_file_for_json("/home/Artemy/mysite/Harry Potter and the Sorcerer.txt")
     proposal = []
 
     for str_read in file_read:
