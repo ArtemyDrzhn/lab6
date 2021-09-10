@@ -1,5 +1,5 @@
 # import nltk
-from nltk import word_tokenize
+from nltk import word_tokenize, sent_tokenize
 from setuptools._vendor.ordered_set import is_iterable
 
 
@@ -29,6 +29,17 @@ def open_file(filename):
     with open(filename, encoding='utf-8') as file:
         # nltk.download('punkt')
         a = [word_tokenize(i) for i in file.readlines()]
+        return flatten(a)
+
+
+def open_file_for_json(filename):
+    """
+    Чтение данных с текстового файла
+    :param filename: текстовый файл
+    :return: список, разбитый на предложения
+    """
+    with open(filename, encoding='utf-8') as file:
+        a = [sent_tokenize(i) for i in file.readlines()]
         return flatten(a)
 
 

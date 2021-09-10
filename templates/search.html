@@ -13,19 +13,11 @@
      <form action="" method="post">
         <p>
 	    <label style="font-size: 32px" for="word">Word</label>
-	    <input type="text" name="word" value=
-                {% if cookie %}
-                    {{ cookie.get('word') }}
-                {% endif %}
-        >
+	    <input type="text" name="word" value={% if cookie.get('flag') %}{{ cookie['word'] }}{% endif %}>
 	</p>
 	<p>
 	    <label style="font-size: 32px"  for="quantity">Quantity</label>
-	    <input type="text" name="quantity" value=
-                {% if cookie %}
-                    {{ cookie.get('quantity') }}
-                {% endif %}
-        >
+	    <input type="text" name="quantity" value="{% if cookie.get('flag') %}{{ cookie['quantity'] }}{% endif %}">
 	</p>
 	<p>
 	    <input type="submit">
